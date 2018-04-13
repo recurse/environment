@@ -4,7 +4,7 @@ if [ -f ~/.githubtoken ]; then
     export HOMEBREW_GITHUB_API_TOKEN=$(cat .githubtoken)
 fi
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH:/Users/andrae/.local/bin"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/.local/bin"
 
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
@@ -39,6 +39,10 @@ function __provide_git_info {
 export CLICOLOR=1
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM="auto"
-export PS1="\[\e[0;36m\][\T] \[\e[1;32m\]\h\[\e[1;36m\]:\[\e[0;32m\]\w \[\e[1;35m\](\u)\n\[\e[1;31m\]\$(__provide_git_info) \[\e[0;34m\]\$ \[\e[1;36m\]"
+export PS1="\[\e[36m\][\T] \[\e[92m\]\h\[\e[36m\]:\[\e[32m\]\w \[\e[2;95m\](\u) \[\e[22;91m\]\$(__provide_git_info) \[\e[34m\]\n\$ \[\e[96m\]"
 eval `dircolors $HOME/src/thirdparty/dircolors-solarized/dircolors.ansi-dark`
 alias 'ls=ls --color=auto'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
